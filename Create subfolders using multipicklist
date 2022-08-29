@@ -16,6 +16,11 @@ for each  service in servicesList
 		serviceFolder = zoho.workdrive.createFolder(service,workdriveRetrofit,"werpo_workdrive_connection");
 		servicesFolder_ID = serviceFolder.get("data").get("id");
 		parent_IDs.add(servicesFolder_ID);
+		for each  subFolderName in subFolders
+		{
+			createfolder = zoho.workdrive.createFolder(subFolderName,servicesFolder_ID,"werpo_workdrive_connection");
+			getUrl("https://httpstat.us/200?sleep=1000");
+		}
 	}
 }
 info parent_IDs;
@@ -25,13 +30,6 @@ deal.put("BR_Services",parent_IDs);
 deal.put("BR_Workdrive_Reference",servicesList);
 dealUpdate = zoho.crm.updateRecord("Deals",Deal_id,deal,otherMap,"zoho_crm_production");
 info dealUpdate;
-for each  subFolderName in subFolders
-{
-	for each  subFolderParent_ID in parent_IDs
-	{
-		createfolder = zoho.workdrive.createFolder(subFolderName,subFolderParent_ID,"werpo_workdrive_connection");
-	}
-}
 return servicesList;
 //{"Air Compressors","Air Handlers","Air Sealing – Common Area","Air Sealing – In Unit","Appliances","Blower Fan","BMS"}
 }
