@@ -1,0 +1,37 @@
+list createServicesFolder(list servicesList, int Deal_id, string workdriveRetrofit)
+{
+info servicesList;
+subFolders = {"Utility Application","Payments","Contracts"};
+parent_IDs = list();
+Deal_id = toNumber(Deal_id);
+dealInfo = zoho.crm.getRecordById("Deals",Deal_id,"zoho_crm_production");
+BRWorkdriveReference = dealInfo.get("BR_Workdrive_Reference");
+info BRWorkdriveReference;
+for each  service in servicesList
+{
+	checkExists = BRWorkdriveReference.contains(service);
+	info checkExists;
+	if(!checkExists == true)
+	{
+		serviceFolder = zoho.workdrive.createFolder(service,workdriveRetrofit,"werpo_workdrive_connection");
+		servicesFolder_ID = serviceFolder.get("data").get("id");
+		parent_IDs.add(servicesFolder_ID);
+	}
+}
+info parent_IDs;
+otherMap = Map();
+deal = Map();
+deal.put("BR_Services",parent_IDs);
+deal.put("BR_Workdrive_Reference",servicesList);
+dealUpdate = zoho.crm.updateRecord("Deals",Deal_id,deal,otherMap,"zoho_crm_production");
+info dealUpdate;
+for each  subFolderName in subFolders
+{
+	for each  subFolderParent_ID in parent_IDs
+	{
+		createfolder = zoho.workdrive.createFolder(subFolderName,subFolderParent_ID,"werpo_workdrive_connection");
+	}
+}
+return servicesList;
+//{"Air Compressors","Air Handlers","Air Sealing – Common Area","Air Sealing – In Unit","Appliances","Blower Fan","BMS"}
+}
