@@ -1,0 +1,15 @@
+map createEVChargingSubfolders(int Deals_id)
+{
+deal = zoho.crm.getRecordById("Deals",Deals_id,"zoho_crm_production");
+EV_ChargingWorkdrive_ID = deal.get("Workdrive_EV_Charging_ID");
+subFolders = {"Utility Application","Payments","Contracts"};
+if(!EV_ChargingWorkdrive_ID == Null)
+{
+	for each  folder in subFolders
+	{
+		createsubFolders = zoho.workdrive.createFolder(folder,EV_ChargingWorkdrive_ID,"werpo_workdrive_connection");
+		info createsubFolders;
+	}
+}
+return createsubFolders;
+}
