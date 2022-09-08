@@ -1,0 +1,15 @@
+void assign_properties(int id)
+{
+account = zoho.crm.getRecordById("Accounts",id);
+lead_num = account.get("Lead_No");
+properties = zoho.crm.searchRecords("Solutions","(Lead_No:equals:" + lead_num + ")");
+bulk_update = list();
+for each  property in properties
+{
+	update_data = Map();
+	update_data.put("id",property.get("id"));
+	update_data.put("Account",id);
+	bulk_update.add(update_data);
+}
+info zoho.crm.bulkUpdate("Solutions",bulk_update);
+}
