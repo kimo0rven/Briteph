@@ -1,4 +1,4 @@
-void assign_lead_no(int id)
+void assign_lead_no(int property_id)
 {
 property = zoho.crm.getRecordById("Solutions",id);
 lead = property.get("Lead");
