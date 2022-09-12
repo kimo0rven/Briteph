@@ -1,0 +1,16 @@
+Update_Deal_Name(int dealID)
+{
+deal = zoho.crm.getRecordById("Deals",id);
+//info deal;
+dealAccount = deal.get("Account_Name").get("name");
+dealTypeOfService = deal.get("Type_of_Service1");
+dealCreatedTime = deal.get("Created_Time");
+//info dealCreatedTime;
+//info dealCreatedBy;
+dealName = dealAccount + " - " + dealTypeOfService + " - " + getYear(dealCreatedTime);
+info dealName;
+newUpdate = Map();
+newUpdate.put("Deal_Name",dealName);
+updateDeal = zoho.crm.updateRecord("Deals",id,newUpdate);
+//info updateDeal;
+}
