@@ -1,0 +1,14 @@
+updateProperties(int properties)
+{
+property = zoho.crm.getRecordById("Properties",id);
+propertyStreet = property.get("Street");
+propertyCiy = property.get("City");
+propertyState = property.get("State");
+propertyZipCode = property.get("Zip_Code");
+propertyName = propertyStreet + ", " + propertyCiy + ", " + propertyState + " " + propertyZipCode;
+propertyNew = Map();
+propertyNew.put("Name",propertyName);
+propertyUpdate = zoho.crm.updateRecord("Properties",id,propertyNew);
+info propertyNew;
+//info propertyStreet + ", " + propertyCiy + ", " + propertyState + " " + propertyZipCode;
+}
