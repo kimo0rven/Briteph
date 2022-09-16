@@ -1,0 +1,39 @@
+properties(int propertyID)
+{
+property = zoho.crm.getRecordById("Properties",propertyId);
+containers = property.get("Solid_Waste_Container_Info");
+containerList = containers.toList(",");
+index = 0;
+propertyNew = Map();
+tempList = List();
+for each  container in containerList
+{
+	recyclable = false;
+	pickUp = "";
+	parsedContainer = container.trim().toList(" ");
+	if(parsedContainer.size() == 3)
+	{
+		recyclable = true;
+		pickUp = parsedContainer.get(2).remove("x");
+	}
+	else
+	{
+		pickUp = parsedContainer.get(1).remove("x");
+		info false;
+	}
+	info parsedContainer;
+	containerDimension = parsedContainer.get(0).removeAllAlpha();
+	info containerDimension;
+	containerDimension = containerDimension.toList("-");
+	length = containerDimension.get(0);
+	width = containerDimension.get(1);
+	containersSubform = Map();
+	containersSubform.put("Pickup_Week",pickUp);
+	containersSubform.put("Container_Length",length);
+	containersSubform.put("Is_Recycling_Container",recyclable);
+	containersSubform.put("Container_Width",width);
+	tempList.add(containersSubform);
+}
+propertyNew.put("Solid_Waste_Container",tempList);
+zoho.crm.updateRecord("Properties",propertyId,propertyNew);
+}
