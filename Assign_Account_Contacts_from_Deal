@@ -1,0 +1,12 @@
+void AssignAccountContactsFromDeals(int propertyID)
+{
+property = zoho.crm.getRecordById("Properties",propertyID);
+dealID = property.get("Deal").get("id");
+deal = zoho.crm.getRecordById("Deals",dealID);
+account = deal.get("Account_Name");
+property = Map();
+property.put("Account",account);
+contact = deal.get("Contact_Name");
+property.put("Contact",contact);
+propertyUpdate = zoho.crm.updateRecord("Properties",propertyID,property);
+}
