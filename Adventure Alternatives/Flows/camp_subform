@@ -1,0 +1,20 @@
+map camp_subform(string deal_id)
+{
+deals_data = zoho.crm.getRecordById("Deals",deal_id,"zoho_crm_connection_sandbox");
+access = deals_data.get("Campss");
+for each index dex in access
+{
+	subform = deals_data.get("Campss").get(dex);
+	num_students = deals_data.get("Campss").get(dex).get("Number_of_Students");
+	num_teachers = deals_data.get("Campss").get(dex).get("Number_of_Teachers");
+	year_lvl = deals_data.get("Campss").get(dex).get("Year_Levels");
+	num_days = deals_data.get("Campss").get(dex).get("Number_of_Days");
+	subVal = {"Number_of_Students":num_students,"Number_of_Teachers":num_teachers,"Number":num_days,"Year_Level":year_lvl};
+	// 	response = zoho.crm.createRecord("Camps",subVal,"zoho_crm_connection_sandbox");
+	info dex;
+	// 	info response;
+	info access;
+}
+// return access;
+return deals_data;
+}
