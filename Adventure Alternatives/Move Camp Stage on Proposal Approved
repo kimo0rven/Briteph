@@ -1,0 +1,13 @@
+move_Camp_Stage_Proposal_Approved(int id) {
+dealRecords = zoho.crm.getRecordById("Deals",dealID);
+relatedCamp = zoho.crm.getRelatedRecords("Camps","Deals",dealID);
+// info dealRecords;
+// info relatedCamp;
+updateMap = Map();
+for each  records in relatedCamp
+{
+	updateMap.put("Stage","Preparation");
+	update = zoho.crm.updateRecord("Camps",records.get("id"),updateMap);
+}
+info update;
+}
