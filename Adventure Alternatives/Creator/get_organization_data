@@ -1,0 +1,8 @@
+map get_organisation_data(string deal_id)
+{
+deal_data = zoho.crm.getRecordById("Deals",deal_id,"zoho_crm_integration");
+org_id = deal_data.get("Account_Name").get("id");
+org_data = zoho.crm.getRecordById("Accounts",org_id,"zoho_crm_integration");
+info deal_data;
+return org_data;
+}
