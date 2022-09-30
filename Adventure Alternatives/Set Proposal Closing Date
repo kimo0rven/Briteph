@@ -1,0 +1,6 @@
+voidSetProposalClosingDate(String id) {
+proposal_data = zoho.crm.getRecordById("Deals",id);
+closing_date = today;
+closing_date = closing_date.addDay(14);
+zoho.crm.updateRecord("Deals",id,{"Closing_Date":closing_date});
+}
