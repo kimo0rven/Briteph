@@ -1,0 +1,9 @@
+string campLocation(string id)
+{
+camp = zoho.crm.getRecordById("Camps",id,"zoho_crm_integration");
+campLocation = camp.get("Camp_Locations");
+info campLocation;
+// value = Map();
+// value.put("Camp_Location",campLocation);
+return campLocation;
+}
