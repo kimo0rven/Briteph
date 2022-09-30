@@ -1,0 +1,6 @@
+void add_medical_record(map form_answers)
+{
+otherParams = Map();
+info zoho.creator.createRecord("sustainableadventuresptyltd","camp","Medical_and_Dietary_Needs",form_answers,otherParams,"zoho_forms_integration1");
+//zoho.creator.createRecord(<TEXT>, <TEXT>, <TEXT>, <KEY-VALUE>, <KEY-VALUE>, <TEXT>)
+}
