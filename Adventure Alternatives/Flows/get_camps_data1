@@ -1,0 +1,7 @@
+map get_camps_data1(string camp_id)
+{
+camp_data = zoho.crm.getRecordById("Camps",camp_id,"zoho_crm_integration");
+deal_id = camp_data.get("Deal").get("id");
+deal_data = zoho.crm.getRecordById("Deals",deal_id,"zoho_crm_integration");
+return deal_data;
+}
