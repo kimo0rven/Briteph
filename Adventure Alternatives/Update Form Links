@@ -1,0 +1,8 @@
+voidupdate_form_links(Int id,String camp_id) {
+medical_form_link_teachers = "https://forms.zohopublic.com/sustainableadventuresptyltd/form/MedicalandDietaryFormforTeachers/formperma/NPHs4BzwWcXiDg0Jo1dLAGBdakim6cNfoZO6R-ikou4?camp_id=" + camp_id;
+medical_form_link_students = "https://forms.zohopublic.com/sustainableadventuresptyltd/form/MedicalandDietaryForm/formperma/GJ6MjHCkcJJFjUhLjGlxVEA4Jp_55QdSlAqlkEJ6laQ?camp_id=" + camp_id;
+update_camp = Map();
+update_camp.put("Camp_Medical_and_Dietary_Form_Link_for_Teachers",medical_form_link_teachers);
+update_camp.put("Camp_Medical_and_Dietary_Form_Link",medical_form_link_students);
+info zoho.crm.updateRecord("Camps",id,update_camp);
+}
