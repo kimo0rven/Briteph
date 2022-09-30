@@ -1,0 +1,10 @@
+voidbooking_form_URL(Int deal_id) {
+bookingForm = "https://creatorapp.zohopublic.com/sustainableadventuresptyltd/proposal/page-perma/Booking_Form_Page/mdVz5uOEvk3KB05Fh0Bm6RXz2bR6HqW9Q33RJ6wNtBhPyWD1BgMxyqRg16TXwFx2krQNGPvDxRx3FzF9GDRNubwram5DxMV4sM0K?deal_id=" + deal_id;
+dataMap = Map();
+dataMap.put("Booking_Form_URL",bookingForm);
+info dataMap;
+update = zoho.crm.updateRecord("Deals",deal_id,dataMap);
+info update;
+// test = zoho.crm.getRecordById("Deals", deal_id);
+// info test;
+}
