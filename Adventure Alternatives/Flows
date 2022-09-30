@@ -1,8 +1,0 @@
-map fetch_deal_details(string id)
-{
-access = zoho.crm.getRecordById("Deals",id,"zoho_crm_integration");
-test = Map();
-test.put("Year_Levels",access.get("Year_Levels"));
-test.put("currentYear",access.get("Created_Time").getYear());
-return test;
-}
