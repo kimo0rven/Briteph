@@ -1,0 +1,5 @@
+map format_duedate(string camp_duedate)
+{
+camp_duedate = toString(camp_duedate,"dd-MMM-YYYY");
+return {"Camp_duedate":camp_duedate};
+}
