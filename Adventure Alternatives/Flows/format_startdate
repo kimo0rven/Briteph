@@ -1,0 +1,7 @@
+map format_startdate(string camp_startdate)
+{
+camp_startdate = toString(camp_startdate,"dd-MMM-YYYY");
+//camp_startdate = toDate(toString(camp_startdate),"dd-MM-YYYY");
+info camp_startdate;
+return {"Camp_startdate":camp_startdate};
+}
