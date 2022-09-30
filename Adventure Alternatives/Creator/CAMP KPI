@@ -1,0 +1,33 @@
+startDay = input.Camp_Start_Date.day();
+endDay = input.Camp_End_Date.day();
+startMonth = input.Camp_Start_Date.month();
+endMonth = input.Camp_End_Date.month();
+startYear = input.Camp_Start_Date.year();
+endYear = input.Camp_End_Date.year();
+currentDate = zoho.currentdate;
+currentYear = currentDate.year();
+currentMonth = currentDate.month();
+currentDay = currentDate.day();
+nextMonth = currentDate.eomonth(1).getMonth();
+eday = currentDate.eomonth(0).day();
+// info nextMonth;
+if(currentDay == 1 || currentDay == 01)
+{
+	input.Current_Month = input.Next_Month;
+	input.Next_Month = "0";
+}
+if(startMonth == endMonth && startYear == currentYear && endYear == currentYear && startMonth == currentMonth)
+{
+	input.Current_Month = abs(endDay - startDay);
+}
+else if(startMonth == endMonth && startMonth == nextMonth && startYear == currentYear && endYear == currentYear)
+{
+	input.Next_Month = abs(endDay - startDay);
+}
+else if(endMonth == nextMonth && startYear == currentYear && endYear == currentYear)
+{
+	nsmonth1 = abs(eday - startDay);
+	input.Current_Month = nsmonth1;
+	nsmonth2 = endDay;
+	input.Next_Month = nsmonth2;
+}
