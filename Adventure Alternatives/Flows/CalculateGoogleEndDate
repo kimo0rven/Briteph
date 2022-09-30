@@ -1,0 +1,12 @@
+string CalculateGoogleEndDate(int campID)
+{
+campRecord = zoho.crm.getRecordById("Camps",campID,"zoho_crm_integration");
+startDate = campRecord.get("Camp_Start_Date");
+days = campRecord.get("Number_of_Days");
+info startDate;
+GoogleEndDate = startDate.addDay(days);
+info GoogleEndDate;
+GoogleEndDate = toString(GoogleEndDate,"YYYY-MM-dd");
+info GoogleEndDate;
+return GoogleEndDate;
+}
