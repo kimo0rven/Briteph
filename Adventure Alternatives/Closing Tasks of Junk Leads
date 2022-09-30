@@ -1,0 +1,13 @@
+voidClosing_Tasks_of_Junk_Leads1(Int leadId,String status) {
+if(status.contains("Junk"))
+{
+	relatedTask = zoho.crm.getRelatedRecords("Tasks","Leads",leadId.toLong(),1);
+	for each  task in relatedTask
+	{
+		mapVariable = Map();
+		mapVariable.put("Status","Completed");
+		updateTask = zoho.crm.updateRecord("Tasks",task.get("id"),mapVariable);
+		info updateTask;
+	}
+}
+}
