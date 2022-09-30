@@ -1,0 +1,14 @@
+update_Camp_Due_Date(int id) {
+camp_data = zoho.crm.getRecordById("Camps",id);
+camp_start_date = camp_data.get("Camp_Start_Date");
+if(camp_start_date != null)
+{
+	camp_due_date = camp_start_date.subWeek(3);
+	if(camp_due_date.weekday() != 2)
+	{
+		days_diff = camp_due_date.weekday() - 2;
+		camp_due_date = camp_due_date.subDay(days_diff);
+	}
+}
+zoho.crm.updateRecord("Camps",id,{"Camp_Due_Date":camp_due_date});
+}
