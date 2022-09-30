@@ -1,0 +1,5 @@
+ready_for_proposal(string id, string deal_id){
+zoho.crm.updateRecord("Camps",id,{"Stage":"Ready for Proposal"},{"trigger":{"workflow"}});
+openUrl("https://crm.zoho.com/crm/adventurealternatives/tab/Potentials/" + deal_id,"same window");
+return "Camp is now ready for proposal!";
+}
