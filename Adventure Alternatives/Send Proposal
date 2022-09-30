@@ -1,0 +1,4 @@
+Stringsend_proposal(String id) {
+zoho.crm.updateRecord("Deals",id,{"Stage":"Proposal Sent"},{"trigger":{"workflow"}});
+return "Proposal Sent to Client";
+}
