@@ -1,0 +1,37 @@
+map format_year_level(string year_level_text)
+{
+year_level_list = list();
+if(year_level_text.containsIgnoreCase("5"))
+{
+	year_level_list.add("Year 5");
+}
+if(year_level_text.containsIgnoreCase("6"))
+{
+	year_level_list.add("Year 6");
+}
+if(year_level_text.containsIgnoreCase("7"))
+{
+	year_level_list.add("Year 7");
+}
+if(year_level_text.containsIgnoreCase("8"))
+{
+	year_level_list.add("Year 8");
+}
+if(year_level_text.containsIgnoreCase("9"))
+{
+	year_level_list.add("Year 9");
+}
+if(year_level_text.containsIgnoreCase("10"))
+{
+	year_level_list.add("Year 10");
+}
+if(year_level_text.containsIgnoreCase("11"))
+{
+	year_level_list.add("Year 11");
+}
+if(year_level_text.containsIgnoreCase("12"))
+{
+	year_level_list.add("Year 12");
+}
+return {"year_level":year_level_list};
+}
