@@ -1,0 +1,12 @@
+voidclosed_lost_deal(Int id) {
+relatedRecords = zoho.crm.getRelatedRecords("Camps","Deals",id);
+valueMap = Map();
+for each  camp in relatedRecords
+{
+	valueMap.put("Stage","Closed Lost");
+	campID = relatedRecords.get(0).get("id");
+}
+info zoho.crm.updateRecord("Camps",campID,valueMap);
+info relatedRecords;
+info valueMap;
+}
