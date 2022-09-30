@@ -1,0 +1,11 @@
+voidSetGoogleEndDate(Int campID) {
+campRecord = zoho.crm.getRecordById("Camps",campID);
+startDate = campRecord.get("Camp_Start_Date");
+days = campRecord.get("Number_of_Days");
+info startDate;
+newDate = startDate.addDay(days);
+info newDate;
+mapDate = Map();
+mapDate.put("Google_Calendar_End_Date",newDate);
+zoho.crm.updateRecord("Camps",campID,mapDate);
+}
