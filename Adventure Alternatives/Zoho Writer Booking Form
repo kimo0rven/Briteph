@@ -1,0 +1,117 @@
+zoho_writer_Booking_Form(int id) {
+info zoho.writer.getMergeFields("qkc0e3883630bbd034ff18754c0eacb2fdaa4","zoho_writer_connection");
+//q3p6y58d1c07d7af345c7a0aa5cf64f0dd2e8
+deals_data = zoho.crm.getRecordById("Deals",deal_id);
+camps = deals_data.get("Campss");
+document = Map();
+year_list = list();
+school = deals_data.get("Account_Name").get("name");
+for each  camp in camps
+{
+	num_students = camp.get("Number_of_Students");
+	num_teachers = camp.get("Number_of_Teachers");
+	year_lvl = camp.get("Year_Levels");
+	num_days = camp.get("Number_of_Days");
+	camp_style = camp.get("Camp_Styles");
+	camp_location = camp.get("Camp_Location");
+	camp_group = camp.get("Camp_Groups");
+	if(year_lvl == "Year 5")
+	{
+		year_list.add("Year 5");
+		document.put("Year_5_Program_Dates",num_days);
+		document.put("Year_5_Program_Style",camp_style);
+		document.put("Year_5_Num_Students",num_students);
+		document.put("Year_5_Num_Teachers",num_teachers);
+		document.put("Year_5_Program_Location",camp_location);
+		document.put("Year_5_Camp_Groups",camp_group);
+		document.put("Year_5_Level",year_lvl);
+	}
+	if(year_lvl == "Year 6")
+	{
+		year_list.add("Year 6");
+		document.put("Year_6_Program_Dates",num_days);
+		document.put("Year_6_Program_Style",camp_style);
+		document.put("Year_6_Num_Students",num_students);
+		document.put("Year_6_Num_Teachers",num_teachers);
+		document.put("Year_6_Program_Location",camp_location);
+		document.put("Year_6_Camp_Groups",camp_group);
+		document.put("Year_6_Level",year_lvl);
+	}
+	if(year_lvl == "Year 7")
+	{
+		year_list.add("Year 7");
+		document.put("Year_7_Program_Dates",num_days);
+		document.put("Year_7_Program_Style",camp_style);
+		document.put("Year_7_Num_Students",num_students);
+		document.put("Year_7_Num_Teachers",num_teachers);
+		document.put("Year_7_Program_Location",camp_location);
+		document.put("Year_7_Camp_Groups",camp_group);
+		document.put("Year_7_Level",year_lvl);
+	}
+	if(year_lvl == "Year 8")
+	{
+		year_list.add("Year 8");
+		document.put("Year_8_Program_Dates",num_days);
+		document.put("Year_8_Program_Style",camp_style);
+		document.put("Year_8_Num_Students",num_students);
+		document.put("Year_8_Num_Teachers",num_teachers);
+		document.put("Year_8_Program_Location",camp_location);
+		document.put("Year_8_Camp_Groups",camp_group);
+		document.put("Year_8_Level",year_lvl);
+	}
+	if(year_lvl == "Year 9")
+	{
+		year_list.add("Year 9");
+		document.put("Year_9_Program_Dates",num_days);
+		document.put("Year_9_Program_Style",camp_style);
+		document.put("Year_9_Num_Students",num_students);
+		document.put("Year_9_Num_Teachers",num_teachers);
+		document.put("Year_9_Program_Location",camp_location);
+		document.put("Year_9_Camp_Groups",camp_group);
+		document.put("Year_9_Level",year_lvl);
+	}
+	if(year_lvl == "Year 10")
+	{
+		year_list.add("Year 10");
+		document.put("Year_10_Program_Dates",num_days);
+		document.put("Year_10_Program_Style",camp_style);
+		document.put("Year_10_Num_Students",num_students);
+		document.put("Year_10_Num_Teachers",num_teachers);
+		document.put("Year_10_Program_Location",camp_location);
+		document.put("Year_10_Camp_Groups",camp_group);
+		document.put("Year_10_Level",year_lvl);
+	}
+	if(year_lvl == "Year 11")
+	{
+		year_list.add("Year 11");
+		document.put("Year_11_Program_Dates",num_days);
+		document.put("Year_11_Program_Style",camp_style);
+		document.put("Year_11_Num_Students",num_students);
+		document.put("Year_11_Num_Teachers",num_teachers);
+		document.put("Year_11_Program_Location",camp_location);
+		document.put("Year_11_Camp_Groups",camp_group);
+		document.put("Year_11_Level",year_lvl);
+	}
+	if(year_lvl == "Year 12")
+	{
+		year_list.add("Year 12");
+		document.put("Year_12_Program_Dates",num_days);
+		document.put("Year_12_Program_Style",camp_style);
+		document.put("Year_12_Num_Students",num_students);
+		document.put("Year_12_Num_Teachers",num_teachers);
+		document.put("Year_12_Program_Location",camp_location);
+		document.put("Year_12_Camp_Groups",camp_group);
+		document.put("Year_12_Level",year_lvl);
+	}
+	// 	// 	response = zoho.writer.mergeAndStore(<document_id>, <values_map>, <output_settings>, <connection>);
+}
+output_settings = Map();
+output_settings.put("doc_name","Camp Booking Form for " + school + " [" + year_list + "]");
+// output_settings.put("folder_id","qbhkye1ef526fff09497191e5b61e0f749550");
+output_settings.put("folder_id","5d4xk9460e959d0144a12939d69d719ba238e");
+response = zoho.writer.mergeAndStore("qkc0e3883630bbd034ff18754c0eacb2fdaa4",document,output_settings,"zoho_writer_connection");
+info response;
+info document;
+info school;
+// info zoho.writer.getMergeFields("qkc0e3883630bbd034ff18754c0eacb2fdaa4","zoho_writer_connection");
+}
