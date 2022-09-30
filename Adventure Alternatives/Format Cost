@@ -1,0 +1,11 @@
+format_Cost(int id)
+{
+campRecord = zoho.crm.getRecordById("Camps",campID);
+campCost = campRecord.get("Cost_Per_Student") * campRecord.get("Number_of_Students");
+info campCost;
+mapData = Map();
+mapData.put("Camp_Activity_Cost",campCost);
+info mapData;
+newTotalCost = zoho.crm.updateRecord("Camps",campID,mapData);
+info newTotalCost;
+}
