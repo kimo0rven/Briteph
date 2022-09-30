@@ -1,0 +1,27 @@
+create_Camp(int id) {
+deal_data = zoho.crm.getRecordById("Deals",id);
+year_levels = deal_data.get("Year_Levels");
+contact_id = deal_data.get("Contact_Name").get("id");
+contact_data = zoho.crm.getRecordById("Contacts",contact_id);
+email = contact_data.get("Email");
+organisation_id = deal_data.get("Account_Name").get("id");
+program_style = deal_data.get("Program_Style");
+number_of_students = deal_data.get("Number_of_Students");
+bulk_add = list();
+for each  year_level in year_levels
+{
+	camp_data = Map();
+	camp_data.put("Name","Camp for " + year_level);
+	camp_data.put("Deal",id);
+	camp_data.put("Contact",contact_id);
+	camp_data.put("School",organisation_id);
+	camp_data.put("Stage","New");
+	camp_data.put("Year_Level",year_level);
+	camp_data.put("Camp_Locations","Kenilworth");
+	camp_data.put("Number_of_Students",number_of_students);
+	camp_data.put("Email",email);
+	bulk_add.add(camp_data);
+}
+trigger = {"trigger":{"workflow","blueprint"}};
+info zoho.crm.bulkCreate("Camps",bulk_add,trigger);
+}
