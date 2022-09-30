@@ -1,0 +1,9 @@
+map initial_invoice(string id)
+{
+access_deals = zoho.crm.getRecordById("Deals",id,"zoho_crm_connection_sandbox");
+contact = access_deals.get("Contact_Name").get("id");
+access_contact = zoho.crm.getRecordById("Contacts",contact,"zoho_crm_connection_sandbox");
+contact_email = access_contact.get("Email");
+contact_owner = access_contact.get("Owner").get("email");
+return access_contact;
+}
