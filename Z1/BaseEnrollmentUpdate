@@ -1,0 +1,62 @@
+voidBaseEnrollmentUpdate(Int MembershipID) {
+Membership = zoho.crm.getRecordById("Memberships",MembershipID);
+//info Membership;
+EnrollmentType = Membership.get("Enrollment_Type");
+CoverageTier = Membership.get("Coverage_Tier").toList(" ");
+CoverageTierSize = CoverageTier.size();
+if(CoverageTierSize == 1)
+{
+	CoverageTier = "MM";
+}
+else
+{
+	if(CoverageTier.get(2) == "Spouse")
+	{
+		CoverageTier = "MS";
+	}
+	else if(CoverageTier.get(2) == "Family")
+	{
+		CoverageTier = "MF";
+	}
+	else
+	{
+		CoverageTier = "MC";
+	}
+}
+AgeGroup = Membership.get("Age_Group").toList(" ").get(1);
+if(AgeGroup == "18-29")
+{
+	AgeGroup = 1;
+}
+else if(AgeGroup == "30-39")
+{
+	AgeGroup = 2;
+}
+else if(AgeGroup == "30-49")
+{
+	AgeGroup = 3;
+}
+else if(AgeGroup == "40-49")
+{
+	AgeGroup = 4;
+}
+else
+{
+	AgeGroup = 5;
+}
+IUA = Membership.get("IUA").getAlphaNumeric();
+RecordName = EnrollmentType + "-" + IUA + "-" + CoverageTier + "-" + AgeGroup;
+BaseMembership = zoho.crm.searchRecords("Base_Memberships","(Name:equals:" + RecordName + ")");
+//info BaseMembership;
+BaseMembershipName = BaseMembership.get(0).get("Name");
+BaseMembershipID = BaseMembership.get(0).get("id");
+//info BaseMembershipName;
+membershipBaseMap = Map();
+membershipBaseMap.put("id",BaseMembershipID);
+membershipBaseMap.put("name",BaseMembershipName);
+membershipMap = Map();
+membershipMap.put("Base_Membership",membershipBaseMap);
+//info membershipMap;
+updateBaseMembership = zoho.crm.updateRecord("Memberships",MembershipID,membershipMap);
+info updateBaseMembership;
+}
