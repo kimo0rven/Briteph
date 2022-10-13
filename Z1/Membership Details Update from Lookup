@@ -1,0 +1,67 @@
+void Membership_Details_Update_from_Lookup(Int membershipID) () {
+Membership = zoho.crm.getRecordById("Memberships",membershipID);
+BaseMembershipID = Membership.get("Base_Membership").get("id");
+BaseMembership = zoho.crm.getRecordById("Base_Memberships",BaseMembershipID);
+Type = BaseMembership.get("Type");
+IUA = BaseMembership.get("IUA");
+if(IUA == 1000)
+{
+	IUA = "$1,000";
+}
+else if(IUA == 2500)
+{
+	IUA = "$2,500";
+}
+else
+{
+	IUA = "$5,000";
+}
+Tier = BaseMembership.get("Tier");
+if(Tier == "MM")
+{
+	Tier = "Member";
+}
+else if(Tier == "MS")
+{
+	Tier = "Member and Spouse";
+}
+else if(Tier == "MF")
+{
+	Tier = "Member and Family";
+}
+else
+{
+	Tier = "Member and Child(ren)";
+}
+AgeGroup = BaseMembership.get("Age_Group");
+if(AgeGroup == 1)
+{
+	AgeGroup = "Age 18-29";
+}
+else if(AgeGroup == 2)
+{
+	AgeGroup = "Age 30-39";
+}
+else if(AgeGroup == 3)
+{
+	AgeGroup = "Age 30-49";
+}
+else if(AgeGroup == 4)
+{
+	AgeGroup = "Age 40-49";
+}
+else
+{
+	AgeGroup = "Age 50-64";
+}
+rate = BaseMembership.get("Rate");
+MembershipEnrollmentNew = Map();
+MembershipEnrollmentNew.put("Enrollment_Type",Type);
+MembershipEnrollmentNew.put("IUA",IUA);
+MembershipEnrollmentNew.put("Coverage_Tier",Tier);
+MembershipEnrollmentNew.put("Age_Group",AgeGroup);
+MembershipEnrollmentNew.put("Rate",rate);
+info MembershipEnrollmentNew;
+update = zoho.crm.updateRecord("Memberships",membershipID,MembershipEnrollmentNew);
+info update;
+}
